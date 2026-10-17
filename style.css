@@ -1,3 +1,194 @@
-body { font-family: sans-serif; background-color: #f4f4f4; color: #333; padding: 20px; }
-.comando { background: white; padding: 15px; margin-bottom: 10px; border-left: 5px solid #2ecc71; border-radius: 4px; }
-h1 { color: #2c3e50; }
+
+/* ==============================
+   DISEÑO MODERNO Y PROFESIONAL
+   ============================== */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: "Segoe UI", Arial, sans-serif;
+    background: linear-gradient(
+        135deg,
+        #0f172a,
+        #1e1b4b,
+        #172554
+    );
+    color: #f8fafc;
+    padding: 30px;
+    min-height: 100vh;
+    line-height: 1.6;
+}
+
+/* Título principal */
+
+h1 {
+    text-align: center;
+    font-size: clamp(2rem, 5vw, 3rem);
+    font-weight: 800;
+    margin-bottom: 35px;
+
+    background: linear-gradient(
+        90deg,
+        #22d3ee,
+        #a78bfa,
+        #f472b6
+    );
+
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+
+    letter-spacing: 1px;
+    animation: aparecer 0.8s ease both;
+}
+
+/* Tarjetas de comandos */
+
+.comando {
+    position: relative;
+    overflow: hidden;
+
+    background: linear-gradient(
+        135deg,
+        rgba(255, 255, 255, 0.10),
+        rgba(255, 255, 255, 0.04)
+    );
+
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-left: 5px solid #22d3ee;
+    border-radius: 16px;
+
+    padding: 22px;
+    margin: 0 auto 18px;
+    max-width: 1000px;
+
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.20);
+    backdrop-filter: blur(12px);
+
+    transition:
+        transform 0.4s ease,
+        background 0.4s ease,
+        border-color 0.4s ease,
+        box-shadow 0.4s ease;
+}
+
+/* Brillo decorativo */
+
+.comando::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -120%;
+    width: 70%;
+    height: 100%;
+
+    background: linear-gradient(
+        110deg,
+        transparent,
+        rgba(255, 255, 255, 0.12),
+        transparent
+    );
+
+    transition: left 0.6s ease;
+    pointer-events: none;
+}
+
+/* Efecto al pasar el cursor */
+
+.comando:hover {
+    transform: translateY(-7px) scale(1.02);
+
+    background: linear-gradient(
+        120deg,
+        rgba(34, 211, 238, 0.20),
+        rgba(139, 92, 246, 0.22),
+        rgba(244, 114, 182, 0.16)
+    );
+
+    border-color: #a78bfa;
+    border-left-color: #f472b6;
+
+    box-shadow:
+        0 15px 35px rgba(124, 58, 237, 0.25),
+        0 0 18px rgba(34, 211, 238, 0.12);
+}
+
+.comando:hover::before {
+    left: 150%;
+}
+
+/* Selección con teclado */
+
+.comando:focus-within {
+    outline: 2px solid #22d3ee;
+    outline-offset: 4px;
+}
+
+/* Animación de entrada */
+
+@keyframes aparecer {
+    from {
+        opacity: 0;
+        transform: translateY(15px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Diseño para tablets */
+
+@media (max-width: 768px) {
+    body {
+        padding: 22px;
+    }
+
+    h1 {
+        margin-bottom: 25px;
+    }
+
+    .comando {
+        padding: 18px;
+        margin-bottom: 15px;
+    }
+}
+
+/* Diseño para celulares */
+
+@media (max-width: 480px) {
+    body {
+        padding: 14px;
+    }
+
+    h1 {
+        font-size: 1.8rem;
+        margin-bottom: 22px;
+    }
+
+    .comando {
+        padding: 15px;
+        border-radius: 12px;
+        margin-bottom: 13px;
+    }
+
+    .comando:hover {
+        transform: translateY(-3px);
+    }
+}
+
+/* Accesibilidad: reducir animaciones */
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation: none !important;
+        transition: none !important;
+    }
+}
